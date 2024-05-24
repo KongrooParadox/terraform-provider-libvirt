@@ -193,9 +193,9 @@ func newDiskForCloudInit(virConn *libvirt.Libvirt, volumeKey string) (libvirtxml
 		Serial: "cloudinit",
 		Device: "cdrom",
 		Target: &libvirtxml.DomainDiskTarget{
-			// Last device letter possible with a single IDE controller on i440FX
+			// Use scsi to make cloudinit disk work for aarch64 mac m1 mini
 			Dev: "hdd",
-			Bus: "sata",
+			Bus: "scsi",
 		},
 		Driver: &libvirtxml.DomainDiskDriver{
 			Name: "qemu",
